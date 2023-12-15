@@ -33,13 +33,13 @@ class Robot
 	private:
 		position3D basePos, toolPos;
 
-		const int offsetA, offsetB, offsetJointC;
-		const int toolOffset;
+		int offsetA, offsetB, offsetJointC;
+		int toolOffset;
 
-		const int maxAngleA;
-		const int maxAngleB;
-		const int maxAngleC;
-		const int maxRange = 69;
+		int maxAngleA;
+		int maxAngleB;
+		int maxAngleC;
+		int maxRange = 69;
 
 };
 

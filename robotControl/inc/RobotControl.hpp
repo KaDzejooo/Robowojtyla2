@@ -16,7 +16,7 @@ class RobotControl
 	public:
 		RobotControl( );
 		void moveRobotTo(int x,int y ,int z);
-		void
+		//void
 };
 
 #endif /* ROBOTCONTROL_HPP_ */
