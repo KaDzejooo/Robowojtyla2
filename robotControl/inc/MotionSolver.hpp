@@ -35,6 +35,7 @@ class MotionSolver
 		void solveLinear(jointAngles_t accAnglesIN, jointAngles_t targetAnglesIN);
 
 
+		jointAngles_t inverseKinematics(position3D targetPos);
 
 
 		/*
@@ -49,8 +50,8 @@ class MotionSolver
 
 	private:
 
-		std::vector<int> accAngles;
-		std::vector<int> targetAngles;
+		jointAngles_t accAngles;
+		jointAngles_t targetAngles;
 		Robot robotData;
 		std::vector<jointAngles_t> moves;
 };

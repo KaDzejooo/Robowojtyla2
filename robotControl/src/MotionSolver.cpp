@@ -61,3 +61,7 @@ void MotionSolver::setRobot(Robot robotObj)
 {
 	robotData = robotObj;
 }
+
+jointAngles_t MotionSolver::inverseKinematics(position3D targetPos)
+{
+}

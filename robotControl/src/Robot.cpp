@@ -21,6 +21,9 @@ Robot::Robot( )
 	
 }
 
+
+
+
 const position3D& Robot::getBasePos( ) const
 {
 	return basePos;

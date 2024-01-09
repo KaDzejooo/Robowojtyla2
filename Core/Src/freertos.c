@@ -158,8 +158,7 @@ void StartDefaultTask(void *argument)
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
 // TODO rtos task implementation
-void startRobotOne(void *argument){}
-void startRobotTwo(void *argument){}
-void startGlassReader(void *argument){}
+void startRobotTwo(void *argument){};
+void startGlassReader(void *argument){};
 /* USER CODE END Application */
 

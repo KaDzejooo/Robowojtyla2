@@ -9,13 +9,23 @@
 #define ROBOT_HPP_
 
 #include "position3D.hpp"
+#include "main.h"
+#include "i2c.h"
+#include "Servo.hpp"
 /*
  *
  */
+
 class Robot
 {
 	public:
 		Robot( );
+		// parts
+		Servo s1 = Servo(0x00,0x41);//TODO check iic address
+		Servo s2 = Servo(0x01,0x41);//TODO check iic address
+		Servo s3 = Servo(0x02,0x41);//TODO check iic address
+		//set/get
+
 		void setAngles(const int angles[3]);
 		const position3D& getBasePos( ) const;
 		void setBasePos(const position3D &basePos);

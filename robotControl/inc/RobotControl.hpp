@@ -14,30 +14,19 @@
 /*
  *
  */
-class Servo
-{
-	public:
-		Servo(uint8_t channel,uint8_t iicAdress);
-		void setSevroAngle(uint16_t angle);
-	private:
-		void calcPWM(uint8_t angle);
 
-		uint8_t _tOnLow, _tOnHigh, _tOffLow, _tOffHigh;
-		uint8_t _channel;
-		uint8_t _iicAdress;
-
-
-};
 
 
 class RobotControl
 {
 	public:
 		RobotControl();
-		Robot robotData;
+		void taskEntry();
+
+		Robot robotOne;
 		MotionSolver solve;
 
-		void moveRobotTo(int x , int y ,int z);
+		void moveRobotTo(position3D pos);
 	private:
 
 		jointAngles_t actualAngles;
