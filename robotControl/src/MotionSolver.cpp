@@ -7,8 +7,7 @@
 
 #include "MotionSolver.hpp"
 
-MotionSolver::MotionSolver(Robot robot) :
-		robotData(robot)
+MotionSolver::MotionSolver()
 {
 	moves.clear( );
 }
@@ -30,7 +29,9 @@ void MotionSolver::solveLinear(jointAngles_t accAnglesIN, jointAngles_t targetAn
 
 		//TODO check for negative values
 		//TODO check for maxAngles
-		//TODO
+		//TODO this shit won't work at all YET
+
+
 		if (result.angleA != targetAnglesIN.angleA)
 		{
 			result.angleA++;
@@ -53,4 +54,10 @@ void MotionSolver::solveLinear(jointAngles_t accAnglesIN, jointAngles_t targetAn
 		moves.push_back(result);
 	}
 
+
+}
+
+void MotionSolver::setRobot(Robot robotObj)
+{
+	robotData = robotObj;
 }

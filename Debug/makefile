@@ -10,6 +10,10 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include robotControl/src/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
 -include Drivers/STM32F3xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
@@ -85,8 +89,8 @@ all: main-build
 main-build: robowojtyla.elf secondary-outputs
 
 # Tool invocations
-robowojtyla.elf robowojtyla.map: $(OBJS) $(USER_OBJS) C:\Users\oem\STM32CubeIDE\workspace_GFX\robowojtyla\STM32F303RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "robowojtyla.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\oem\STM32CubeIDE\workspace_GFX\robowojtyla\STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="robowojtyla.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+robowojtyla.elf robowojtyla.map: $(OBJS) $(USER_OBJS) C:\Users\oem\Desktop\repositories\Robowojtyla2\STM32F303RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "robowojtyla.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\oem\Desktop\repositories\Robowojtyla2\STM32F303RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="robowojtyla.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

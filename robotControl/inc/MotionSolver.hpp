@@ -25,8 +25,9 @@ typedef struct{
 class MotionSolver
 {
 	public:
-		MotionSolver(Robot robot);
+		MotionSolver() ;
 
+		void setRobot(Robot robotObj);
 		/*
 		 * Solves robot trajectory according to start and end angles
 		 *
@@ -39,7 +40,7 @@ class MotionSolver
 		/*
 		 *  Returns vector of joint angles in order of succesion
 		 */
-		const std::vector <std::vector <int> >& getMoves( ) const
+		const std::vector<jointAngles_t>& getMoves( ) const
 		{
 			return moves;
 		}
@@ -47,10 +48,10 @@ class MotionSolver
 
 
 	private:
-		Robot robotData;
+
 		std::vector<int> accAngles;
 		std::vector<int> targetAngles;
-
+		Robot robotData;
 		std::vector<jointAngles_t> moves;
 };
 
