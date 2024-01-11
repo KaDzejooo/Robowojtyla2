@@ -14,7 +14,7 @@
 class position3D
 {
 	public:
-		position3D( );
+		position3D(int x, int y, int z );
 		int getX( ) const;
 		void setX(int x);
 		int getY( ) const;
@@ -23,7 +23,7 @@ class position3D
 		void setZ(int z);
 
 	private:
-		int x, y, z;
+		int _x, _y, _z;
 
 };
 

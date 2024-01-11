@@ -7,7 +7,8 @@
 
 #include "position3D.hpp"
 
-position3D::position3D( )
+position3D::position3D(int x, int y,int z ):
+_x(x), _y(y), _z(z)
 {
 	// TODO Auto-generated constructor stub
 	
@@ -15,30 +16,30 @@ position3D::position3D( )
 
 int position3D::getX( ) const
 {
-	return x;
+	return _x;
 }
 
 void position3D::setX(int x)
 {
-	this->x = x;
+	this->_x = x;
 }
 
 int position3D::getY( ) const
 {
-	return y;
+	return _y;
 }
 
 void position3D::setY(int y)
 {
-	this->y = y;
+	this->_y = y;
 }
 
 int position3D::getZ( ) const
 {
-	return z;
+	return _z;
 }
 
 void position3D::setZ(int z)
 {
-	this->z = z;
+	this->_z = z;
 }

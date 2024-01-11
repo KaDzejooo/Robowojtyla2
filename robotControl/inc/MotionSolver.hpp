@@ -45,8 +45,11 @@ class MotionSolver
 		{
 			return moves;
 		}
-
-
+		
+		const jointAngles_t& getAccAngles( ) const
+		{
+			return accAngles;
+		}
 
 	private:
 

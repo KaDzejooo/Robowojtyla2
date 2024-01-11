@@ -14,7 +14,8 @@
 /*
  *
  */
-
+#define DIRECT_MODE 0
+#define LINEAR_MODE 1
 
 
 class RobotControl
@@ -22,15 +23,16 @@ class RobotControl
 	public:
 		RobotControl();
 		void taskEntry();
+		void setMoveMode(uint8_t mode);
 
 		Robot robotOne;
 		MotionSolver solve;
 
-		void moveRobotTo(position3D pos);
+		void moveRobotTo(position3D pos,uint16_t orientation);
 	private:
-
-		jointAngles_t actualAngles;
-		jointAngles_t targetAngles;
+		bool moveMode =0;
+		//jointAngles_t actualAngles;
+		//jointAngles_t targetAngles;
 
 };
 
