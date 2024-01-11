@@ -7,11 +7,11 @@
 
 #include "position3D.hpp"
 
-position3D::position3D(int x, int y,int z ):
-_x(x), _y(y), _z(z)
+position3D::position3D(int x, int y,int z, int phi ):
+_x(x), _y(y), _z(z), _phi(phi)
 {
-	// TODO Auto-generated constructor stub
 	
+
 }
 
 int position3D::getX( ) const
@@ -42,4 +42,14 @@ int position3D::getZ( ) const
 void position3D::setZ(int z)
 {
 	this->_z = z;
+}
+
+int position3D::getPhi( ) const
+{
+	return _phi;
+}
+
+void position3D::setPhi(int phi)
+{
+	this->_phi = phi;
 }

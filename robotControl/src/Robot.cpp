@@ -9,7 +9,7 @@
 
 Robot::Robot( )
 {
-	offsetA=0; offsetB=0; offsetJointC=0;
+	offsetA=155; offsetB=149; offsetJointC=149;
 	toolOffset = 0;
 
 	maxAngleA = 0;
@@ -17,10 +17,12 @@ Robot::Robot( )
 	maxAngleC =0;
 
 
-	// TODO Auto-generated constructor stub
 	
 }
-
+Robot::Robot(int off1, int off2, int off3, int off4):
+offsetA(off1), offsetB(off2), offsetJointC(off3),toolOffset(off4)
+{
+}
 
 
 
@@ -83,3 +85,5 @@ void Robot::setToolPos(const position3D &toolPos)
 {
 	this->toolPos = toolPos;
 }
+
+

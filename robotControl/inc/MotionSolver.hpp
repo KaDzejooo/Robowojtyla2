@@ -35,7 +35,7 @@ class MotionSolver
 		void solveLinear(jointAngles_t accAnglesIN, jointAngles_t targetAnglesIN);
 
 
-		jointAngles_t inverseKinematics(position3D targetPos, Robot robot,uint16_t phi);
+		jointAngles_t inverseKinematics(position3D targetPos, Robot robot);
 
 
 		/*

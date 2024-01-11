@@ -53,7 +53,7 @@ void MotionSolver::solveLinear(jointAngles_t accAnglesIN, jointAngles_t targetAn
 		//moves.emplace(moves.end( ), result);
 		moves.push_back(result);
 	}
-
+	accAngles = result;
 
 }
 
@@ -62,29 +62,26 @@ void MotionSolver::setRobot(Robot robotObj)
 	robotData = robotObj;
 }
 
-jointAngles_t MotionSolver::inverseKinematics(position3D targetPos, Robot robot, uint16_t phi)
+jointAngles_t MotionSolver::inverseKinematics(position3D targetPos, Robot robot)
 {
 	jointAngles_t retVal;
-	//PLANAR PART
-	uint16_t q1, q2, q0; //tool orientation
+	uint16_t q1, q2, q0;
 
 	uint16_t l0 = robot.getOffsetB( );
 	uint16_t l1 = robot.getOffsetJointC( );
 	uint16_t l2 = robot.getToolOffset( );
+	uint16_t baseOffset = robot.getOffsetA();
 
-	uint16_t P2x = targetPos.getX( ) - l2 * cos(phi);
-	uint16_t P2y = targetPos.getZ( ) - l2 * sin(phi);
-
-
+	uint16_t P2x = targetPos.getX( ) - l2 * cos(targetPos.getPhi());
+	uint16_t P2y = targetPos.getZ( ) - (l2 * sin(targetPos.getPhi())) - baseOffset;
 
 	q1 = acos(((P2x*P2x)+(P2x*P2x)-(l0*l0)-(l1*l1))/
 							2*l0*l1);
 	q0=atan(P2x/P2y)-atan((l1*sin(q1))/
 				 	 	  (l0+cos(q1)));
 
-	q2 =phi - q1 - q0;
+	q2 =targetPos.getPhi() - q1 - q0;
 
-	//PLANAR PART END
 	retVal.angleA = q0;
 	retVal.angleB = q1;
 	retVal.angleC = q2;

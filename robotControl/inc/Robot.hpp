@@ -20,6 +20,7 @@ class Robot
 {
 	public:
 		Robot( );
+		Robot(int off1, int off2, int off3, int off4);
 		// parts
 		Servo s1 = Servo(0x00,0x41);//TODO check iic address
 		Servo s2 = Servo(0x01,0x41);//TODO check iic address

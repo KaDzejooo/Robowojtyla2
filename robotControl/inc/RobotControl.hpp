@@ -25,12 +25,13 @@ class RobotControl
 		void taskEntry();
 		void setMoveMode(uint8_t mode);
 
-		Robot robotOne;
+		Robot robotOne = Robot(155,149,149,0);
 		MotionSolver solve;
 
-		void moveRobotTo(position3D pos,uint16_t orientation);
+		void moveRobotTo(position3D pos);
 	private:
 		bool moveMode =0;
+		std::vector<position3D> moveSequence;
 		//jointAngles_t actualAngles;
 		//jointAngles_t targetAngles;
 

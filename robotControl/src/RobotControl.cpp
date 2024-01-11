@@ -19,12 +19,23 @@ RobotControl::RobotControl()
 
 void RobotControl::taskEntry( )
 {
+
+
+	moveSequence.emplace_back(40,50,30,66);
+	moveSequence.emplace_back(80,70,10,42);
+	moveSequence.emplace_back(21,37,42,0);
+	moveSequence.emplace_back(90,90,90,55);
+
 	setMoveMode(DIRECT_MODE);
-	position3D target = {40,50,30};
+
 	for(;;)
 	{
-		moveRobotTo(target,45);
-		osDelay(100);
+		for(uint8_t i = 0;i<moveSequence.size();i++)
+		{
+			moveRobotTo(moveSequence.at(i));
+			osDelay(100);
+		}
+		osDelay(5000);
 	}
 }
 
@@ -33,7 +44,7 @@ void RobotControl::setMoveMode(uint8_t mode)
 	moveMode = mode;
 }
 
-void RobotControl::moveRobotTo(position3D pos, uint16_t orientation)
+void RobotControl::moveRobotTo(position3D pos)
 {
 // start and end positions defined
 // Inverse Kinematics model
@@ -43,7 +54,7 @@ void RobotControl::moveRobotTo(position3D pos, uint16_t orientation)
 // this func moves servos for that amount
 // and updates accAngle in motionSolver (i guess)
 
-	jointAngles_t targetAngles = solve.inverseKinematics(pos,robotOne,orientation);
+	jointAngles_t targetAngles = solve.inverseKinematics(pos,robotOne);
 	jointAngles_t accAngles = solve.getAccAngles( );
 
 	if (moveMode == 0)// direct drive
