@@ -9,13 +9,14 @@
 #define SERVO_HPP_
 #include "main.h"
 #include "i2c.h"
+#include "pca9685.h"
 /*
  *
  */
 class Servo
 {
 	public:
-		Servo(uint8_t channel,uint8_t iicAddress);
+		Servo(uint8_t channel);
 		void setAngle(uint16_t angle);
 	private:
 		void calcPWM(uint8_t angle);

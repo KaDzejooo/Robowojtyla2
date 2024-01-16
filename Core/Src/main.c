@@ -92,7 +92,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-
+  PCA9685_Init(&hi2c1);
   /* USER CODE END 2 */
 
   /* Init scheduler */

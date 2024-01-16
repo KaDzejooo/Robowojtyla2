@@ -11,17 +11,14 @@
 #include <vector>
 #include "Robot.hpp"
 #include "math.h"
+#include "Types.hpp"
 /*
  *
  */
 
-typedef struct{
-		int angleA;
-		int angleB;
-		int angleC;
-		int angleBase;
 
-}jointAngles_t;
+
+
 class MotionSolver
 {
 	public:
@@ -35,7 +32,8 @@ class MotionSolver
 		void solveLinear(jointAngles_t accAnglesIN, jointAngles_t targetAnglesIN);
 
 
-		jointAngles_t inverseKinematics(position3D targetPos);
+		jointAngles_t inverseKinematics(position3D targetPos, Robot robot);
+		jointAngles_t differentialDrive(jointAngles_t ang);
 
 
 		/*
@@ -45,11 +43,14 @@ class MotionSolver
 		{
 			return moves;
 		}
-
-
+		
+		const jointAngles_t& getAccAngles( ) const
+		{
+			return accAngles;
+		}
 
 	private:
-
+		int limitAngle(int max,int min, int angle);
 		jointAngles_t accAngles;
 		jointAngles_t targetAngles;
 		Robot robotData;

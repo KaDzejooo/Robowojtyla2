@@ -6,27 +6,31 @@
  */
 
 #include <Servo.hpp>
+#include "pca9685.h"
 
-Servo::Servo(uint8_t channel, uint8_t iicAddress)
+Servo::Servo(uint8_t channel)
 {
-	_channel = channel; // TODO calculate channel address from channel number or this will work only
-						// for address lower than 10;
-	_iicAddress =iicAddress;
+	_channel = channel;
+
 }
 
 void Servo::setAngle(uint16_t angle)
 {
-	calcPWM(angle);
+//	calcPWM(angle);
+//
+//	uint8_t data[] = {
+//			_tOnLow,
+//			_tOnHigh,
+//			_tOffLow,
+//			_tOffHigh
+//	};
+//
+//
+//	HAL_I2C_Mem_Write(&hi2c1, _iicAddress, _channel, 1, data, 4, 100);
 
-	uint8_t data[] = {
-			_tOnLow,
-			_tOnHigh,
-			_tOffLow,
-			_tOffHigh
-	};
 
+	PCA9685_SetServoAngle(_channel, angle);
 
-	HAL_I2C_Mem_Write(&hi2c1, _iicAddress, _channel, 1, data, 4, 100);
 }
 
 void Servo::calcPWM(uint8_t angle)

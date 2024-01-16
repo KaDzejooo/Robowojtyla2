@@ -14,7 +14,8 @@
 /*
  *
  */
-
+#define DIRECT_MODE 0
+#define LINEAR_MODE 1
 
 
 class RobotControl
@@ -22,15 +23,17 @@ class RobotControl
 	public:
 		RobotControl();
 		void taskEntry();
+		void setMoveMode(uint8_t mode);
 
-		Robot robotOne;
+		Robot robotOne = Robot(155,149,149,0);
 		MotionSolver solve;
 
 		void moveRobotTo(position3D pos);
 	private:
-
-		jointAngles_t actualAngles;
-		jointAngles_t targetAngles;
+		bool moveMode =0;
+		std::vector<position3D> moveSequence;
+		//jointAngles_t actualAngles;
+		//jointAngles_t targetAngles;
 
 };
 
