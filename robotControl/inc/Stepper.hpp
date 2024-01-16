@@ -22,7 +22,7 @@
 class Stepper
 {
 	public:
-		Stepper(uint8_t stepPin,uint8_5 stepPort, uint8_t dirPin, uint8_t dirPort);
+		Stepper(uint8_t stepPin,uint8_t stepPort, uint8_t dirPin, uint8_t dirPort);
 		/*void setMicrostepping(uint8_t microstepping);*/
 		/*void setStepsPerRev(uint8_t stepsPerRev);*/
 
@@ -34,9 +34,9 @@ class Stepper
 			float deg;
 			int step;}degNStep;
 		degNStep calcDegNStep(float angle);
-		uint8_t _stepsPerRev = 200;
-		uint8_t _microstepping = 1;
-		uint8_t _stepPin,_dirPin;
+		float currentAngle;
+		uint16_t  stepPin, dirPin;
+		GPIO_TypeDef*  stepPort, dirPort;
 };
 
 #endif /* STEPPER_HPP_ */

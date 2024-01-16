@@ -6,19 +6,18 @@
  */
 
 #include <Stepper.hpp>
-Stepper::Stepper(uint8_t stepPin, uint8_5 stepPort, uint8_t dirPin,
-		uint8_t dirPort) {
+Stepper::Stepper(uint16_t stepPin, GPIO_TypeDef* stepPort, uint16_t dirPin,GPIO_TypeDef* dirPort) {
 	float currentAngle = 0;
-
 }
 
 
-Stepper::setAngle(uint16_t angle) {
-	calcDegNStep(angle);
-	if (realDegNStep.deg > 0)
-		Hal_GPIO_WritePin(dirPort, dirPin, 1);
-	else
-		Hal_GPIO_WritePin(dirPort, dirPin, 0);
+void Stepper::setAngle(uint16_t angle) {
+	degNStep realDegNStep=calcDegNStep(angle);
+	if (realDegNStep.deg > 0){
+		HAL_GPIO_WritePin(dirPort, dirPin, 1);}
+
+	else{
+		HAL_GPIO_WritePin(dirPort, dirPin, 0);}
 
 	for (int i = 0; i < realDegNStep.step; i++) {
 
