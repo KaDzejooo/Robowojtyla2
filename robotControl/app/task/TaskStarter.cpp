@@ -14,7 +14,8 @@ extern "C" void taskEntry_robotOne( );
 static RobotControl robotController;
 
 
-void taskEntry_robotOne( ){
+void taskEntry_robotOne( )
+{
 
 	robotController.taskEntry();
 }

@@ -53,3 +53,7 @@ void position3D::setPhi(int phi)
 {
 	this->_phi = phi;
 }
+
+position3D::position3D( )
+{
+}

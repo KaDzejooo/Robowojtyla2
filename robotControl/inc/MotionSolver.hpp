@@ -11,17 +11,14 @@
 #include <vector>
 #include "Robot.hpp"
 #include "math.h"
+#include "Types.hpp"
 /*
  *
  */
 
-typedef struct{
-		int angleA;
-		int angleB;
-		int angleC;
-		int angleBase;
 
-}jointAngles_t;
+
+
 class MotionSolver
 {
 	public:
@@ -36,6 +33,7 @@ class MotionSolver
 
 
 		jointAngles_t inverseKinematics(position3D targetPos, Robot robot);
+		jointAngles_t differentialDrive(jointAngles_t ang);
 
 
 		/*
@@ -52,7 +50,7 @@ class MotionSolver
 		}
 
 	private:
-
+		int limitAngle(int max,int min, int angle);
 		jointAngles_t accAngles;
 		jointAngles_t targetAngles;
 		Robot robotData;

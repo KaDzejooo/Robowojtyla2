@@ -10,14 +10,9 @@
 Robot::Robot( )
 {
 	offsetA=155; offsetB=149; offsetJointC=149;
-	toolOffset = 0;
-
-	maxAngleA = 0;
-	maxAngleB = 0;
-	maxAngleC =0;
-
-
-	
+	toolOffset = 90;
+	maxAngles = {180,180,180,360};
+	minAngles = {0,0,0,0};
 }
 Robot::Robot(int off1, int off2, int off3, int off4):
 offsetA(off1), offsetB(off2), offsetJointC(off3),toolOffset(off4)
@@ -26,30 +21,9 @@ offsetA(off1), offsetB(off2), offsetJointC(off3),toolOffset(off4)
 
 
 
-const position3D& Robot::getBasePos( ) const
-{
-	return basePos;
-}
 
-void Robot::setBasePos(const position3D &basePos)
-{
-	this->basePos = basePos;
-}
 
-const int Robot::getMaxAngleA( ) const
-{
-	return maxAngleA;
-}
 
-const int Robot::getMaxAngleB( ) const
-{
-	return maxAngleB;
-}
-
-const int Robot::getMaxAngleC( ) const
-{
-	return maxAngleC;
-}
 
 const int Robot::getMaxRange( ) const
 {
@@ -76,14 +50,22 @@ const int Robot::getToolOffset( ) const
 	return toolOffset;
 }
 
-const position3D& Robot::getToolPos( ) const
+const jointAngles_t& Robot::getMaxAngles( ) const
 {
-	return toolPos;
+	return maxAngles;
 }
 
-void Robot::setToolPos(const position3D &toolPos)
+void Robot::setMaxAngles(const jointAngles_t &maxAngles)
 {
-	this->toolPos = toolPos;
+	this->maxAngles = maxAngles;
 }
 
+const jointAngles_t& Robot::getMinAngles( ) const
+{
+	return minAngles;
+}
 
+void Robot::setMinAngles(const jointAngles_t &minAngles)
+{
+	this->minAngles = minAngles;
+}

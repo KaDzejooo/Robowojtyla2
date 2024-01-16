@@ -27,6 +27,7 @@
 "./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.o"
 "./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o"
 "./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o"
+"./Drivers/pca9685/pca9685.o"
 "./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o"
 "./Middlewares/Third_Party/FreeRTOS/Source/croutine.o"
 "./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o"

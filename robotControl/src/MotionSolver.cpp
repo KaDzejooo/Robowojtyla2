@@ -66,7 +66,6 @@ jointAngles_t MotionSolver::inverseKinematics(position3D targetPos, Robot robot)
 {
 	jointAngles_t retVal;
 	uint16_t q1, q2, q0;
-
 	uint16_t l0 = robot.getOffsetB( );
 	uint16_t l1 = robot.getOffsetJointC( );
 	uint16_t l2 = robot.getToolOffset( );
@@ -82,10 +81,36 @@ jointAngles_t MotionSolver::inverseKinematics(position3D targetPos, Robot robot)
 
 	q2 =targetPos.getPhi() - q1 - q0;
 
-	retVal.angleA = q0;
-	retVal.angleB = q1;
-	retVal.angleC = q2;
+	retVal.angleA = MotionSolver::limitAngle(robot.maxAngles.angleA,robot.minAngles.angleA,q0);
+	retVal.angleB = MotionSolver::limitAngle(robot.maxAngles.angleB,robot.minAngles.angleB,q1);
+	retVal.angleC = MotionSolver::limitAngle(robot.maxAngles.angleC,robot.minAngles.angleC,q2);
 	retVal.angleBase = atan(targetPos.getX( ) / targetPos.getY( ));
 
 	return retVal;
+}
+
+int MotionSolver::limitAngle(int max, int min, int angle)
+{
+	if (angle > max)
+	{
+		return max;
+	}
+	if (angle < min)
+	{
+		return min;
+	}
+	return angle;
+
+	
+}
+
+jointAngles_t MotionSolver::differentialDrive(jointAngles_t ang)
+{
+	jointAngles_t temp;
+
+	// some weird shit
+
+
+
+	return temp;
 }
